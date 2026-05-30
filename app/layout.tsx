@@ -14,9 +14,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Dehan | Software Engineering Student",
+  title: "Dehan | Software Engineer",
   description:
-    "Portfolio of Dehan, a software engineering student building thoughtful digital products.",
+    "Portfolio of Dehan, a software engineering student building reliable systems and thoughtful digital products.",
 };
 
 export default function RootLayout({

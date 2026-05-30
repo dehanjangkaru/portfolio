@@ -1,47 +1,104 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import type { MouseEvent, ReactNode } from "react";
+
 const projects = [
   {
-    title: "Campus Connect",
+    title: "Web Nusantara",
+    eyebrow: "Featured Project",
     description:
-      "A collaborative platform that helps students discover events, join communities, and stay connected on campus.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    href: "https://github.com/dehanjangkaru/campus-connect",
+      "A multi-page ticketing web experience with destination details, login flow, ticket purchasing, and interactive client-side behavior.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    href: "https://github.com/dehanjangkaru/web-nusantara",
+    className: "md:col-span-2",
   },
   {
-    title: "Taskflow API",
+    title: "Flask Rest API",
+    eyebrow: "Full-Stack System",
     description:
-      "A RESTful task management service with secure authentication, project workspaces, and clear API documentation.",
-    technologies: ["Node.js", "Express", "PostgreSQL"],
-    href: "https://github.com/dehanjangkaru/taskflow-api",
+      "A focused product management application with a Python backend, database layer, API routes, and a lightweight browser interface.",
+    technologies: ["Python", "JavaScript", "HTML"],
+    href: "https://github.com/dehanjangkaru/database-crud",
+    className: "",
   },
   {
-    title: "Weather Dashboard",
+    title: "Basic Kalkulator",
+    eyebrow: "C++ Fundamentals",
     description:
-      "A responsive forecast dashboard with location search, accessible data visualizations, and saved preferences.",
-    technologies: ["React", "REST API", "CSS"],
-    href: "https://github.com/dehanjangkaru/weather-dashboard",
+      "A console-based calculator for basic arithmetic operations, built as a clear introduction to C++ program structure and control flow.",
+    technologies: ["C++", "CMake", "CLI"],
+    href: "https://github.com/dehanjangkaru/basic-kalkulator",
+    className: "",
   },
 ];
 
 const skillGroups = [
   {
     title: "Languages",
-    skills: ["TypeScript", "JavaScript", "Python", "Java", "SQL"],
+    description: "The foundations I use to solve problems clearly.",
+    skills: ["C++", "JavaScript", "Python", "HTML", "CSS", "SQL"],
   },
   {
     title: "Frameworks",
-    skills: ["Next.js", "React", "Node.js", "Express", "Tailwind CSS"],
+    description: "Tools for building reliable product experiences.",
+    skills: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS"],
   },
   {
-    title: "Tools",
-    skills: ["Git", "GitHub", "PostgreSQL", "Figma", "VS Code"],
+    title: "Workflow",
+    description: "Systems that keep each project deliberate and maintainable.",
+    skills: ["Git", "GitHub", "MySQL", "Cursor"],
   },
 ];
+
+const stats = [
+  { value: "3", label: "Projects Showcased" },
+  { value: "10+", label: "Technologies" },
+  { value: "Active", label: "GitHub Activity" },
+];
+
+const education = [
+  {
+    period: "Present",
+    title: "Software Engineering Student",
+    organization: "Independent Study & Academic Projects",
+    description:
+      "Building a strong foundation in software architecture, web development, data structures, and collaborative engineering practices.",
+  },
+  {
+    period: "Current Focus",
+    title: "Full-Stack Product Development",
+    organization: "Project-Based Learning",
+    description:
+      "Designing and shipping practical applications with thoughtful interfaces, maintainable APIs, and reliable data models.",
+  },
+];
+
+const revealContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const revealItem: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 function ArrowUpRightIcon() {
   return (
     <svg
       aria-hidden="true"
-      className="h-4 w-4"
+      className="h-4 w-4 shrink-0"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -54,7 +111,7 @@ function ArrowUpRightIcon() {
 
 function GithubIcon() {
   return (
-    <svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="h-[1.125rem] w-[1.125rem]" fill="currentColor" viewBox="0 0 24 24">
       <path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2A11.4 11.4 0 0 1 12 6.3c1 0 2 .1 2.9.4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z" />
     </svg>
   );
@@ -62,15 +119,30 @@ function GithubIcon() {
 
 function LinkedinIcon() {
   return (
-    <svg aria-hidden="true" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+    <svg aria-hidden="true" className="h-[1.125rem] w-[1.125rem]" fill="currentColor" viewBox="0 0 24 24">
       <path d="M20.5 3h-17A2.5 2.5 0 0 0 1 5.5v13A2.5 2.5 0 0 0 3.5 21h17a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 20.5 3ZM8.3 18H5.2V9.7h3.1V18ZM6.8 8.6a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2ZM19 18h-3v-4.5c0-1.2-.5-1.8-1.5-1.8-1.1 0-1.7.7-1.7 2.1V18h-3V9.7h2.9v1.1c.6-.9 1.6-1.4 2.7-1.4 2.2 0 3.6 1.4 3.6 4.2V18Z" />
     </svg>
   );
 }
 
-function Badge({ children }: Readonly<{ children: React.ReactNode }>) {
+function CodeIcon() {
   return (
-    <span className="rounded-full border border-slate-700/80 bg-slate-900/80 px-3 py-1 text-xs font-medium text-slate-300">
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth="1.7"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" />
+    </svg>
+  );
+}
+
+function Badge({ children }: Readonly<{ children: ReactNode }>) {
+  return (
+    <span className="rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-emerald-300">
       {children}
     </span>
   );
@@ -79,124 +151,247 @@ function Badge({ children }: Readonly<{ children: React.ReactNode }>) {
 function SectionHeading({
   eyebrow,
   title,
-}: Readonly<{ eyebrow: string; title: string }>) {
+  description,
+}: Readonly<{ eyebrow: string; title: string; description: string }>) {
   return (
-    <div className="mb-8">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-400">
+    <div className="max-w-2xl space-y-4">
+      <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <h2 className="text-3xl font-bold tracking-[-0.04em] text-slate-100 sm:text-4xl">
         {title}
       </h2>
+      <p className="text-base leading-7 text-slate-400">{description}</p>
+    </div>
+  );
+}
+
+function updateSpotlight(event: MouseEvent<HTMLElement>) {
+  const bounds = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty("--mouse-x", `${event.clientX - bounds.left}px`);
+  event.currentTarget.style.setProperty("--mouse-y", `${event.clientY - bounds.top}px`);
+}
+
+function SpotlightCard({
+  children,
+  className = "",
+}: Readonly<{ children: ReactNode; className?: string }>) {
+  return (
+    <div
+      onMouseMove={updateSpotlight}
+      className={`spotlight-card group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-emerald-400/25 ${className}`}
+    >
+      <div className="spotlight-layer" />
+      <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 }
 
 export default function Home() {
+  const reduceMotion = useReducedMotion();
+  const initial = reduceMotion ? "visible" : "hidden";
+
   return (
-    <main className="mx-auto min-h-screen max-w-6xl px-6 py-8 sm:px-10 lg:px-12">
-      <nav className="flex items-center justify-between py-3">
-        <a href="#" className="text-sm font-bold tracking-[0.18em] text-white">
-          DEHAN<span className="text-cyan-400">.</span>
+    <main className="mx-auto min-h-screen max-w-7xl px-5 sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-white/[0.06] bg-slate-950/75 py-5 backdrop-blur-xl">
+        <a href="#" className="font-mono text-sm font-bold tracking-[0.2em] text-slate-100">
+          DEHAN<span className="text-emerald-400">.</span>
         </a>
-        <a
-          href="#projects"
-          className="rounded-full border border-slate-700 px-4 py-2 text-sm font-medium text-slate-300 transition hover:border-cyan-400 hover:text-cyan-300"
-        >
-          View my work
-        </a>
+        <div className="flex items-center gap-5">
+          <a
+            href="#experience"
+            className="hidden text-sm font-medium text-slate-400 transition hover:text-emerald-300 sm:block"
+          >
+            Experience
+          </a>
+          <a
+            href="#projects"
+            className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-slate-200 transition duration-300 hover:scale-[1.02] hover:border-emerald-400/35 hover:text-emerald-300"
+          >
+            View my work
+          </a>
+        </div>
       </nav>
 
-      <section className="flex min-h-[78vh] items-center py-20">
-        <div className="max-w-3xl">
-          <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-400">
+      <motion.section
+        initial={initial}
+        animate="visible"
+        variants={revealContainer}
+        className="grid min-h-[82vh] items-center gap-12 py-24 lg:grid-cols-[1fr_18rem] lg:py-32"
+      >
+        <div className="max-w-4xl space-y-8">
+          <motion.p
+            variants={revealItem}
+            className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400"
+          >
             Software Engineering Student
-          </p>
-          <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-white sm:text-7xl">
-            Hi, I&apos;m Dehan.
-            <span className="block text-slate-400">I build thoughtful software.</span>
-          </h1>
-          <p className="mt-7 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
-            I&apos;m a software engineering student who enjoys turning ideas into
-            reliable, user-friendly products. I&apos;m currently focused on web
-            development, backend systems, and learning by building.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
+          </motion.p>
+          <motion.h1
+            variants={revealItem}
+            className="text-balance text-5xl font-bold leading-[1.04] tracking-[-0.065em] text-slate-100 sm:text-7xl lg:text-[5.4rem]"
+          >
+            I build software with
+            <span className="block text-slate-400">clarity and intention.</span>
+          </motion.h1>
+          <motion.p variants={revealItem} className="max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+            I&apos;m Dehan, a software engineering student focused on shaping
+            reliable systems and polished digital products. I care about the
+            details that make software useful, maintainable, and easy to trust.
+          </motion.p>
+          <motion.div variants={revealItem} className="flex flex-wrap gap-3">
             <a
               href="https://github.com/dehanjangkaru"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-3 text-sm font-bold text-slate-950 transition duration-300 hover:scale-[1.02] hover:bg-emerald-300"
             >
               <GithubIcon />
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/dehanjangkaru"
+              href="https://linkedin.com/in/dehan-jangkaru"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-200 transition duration-300 hover:scale-[1.02] hover:border-emerald-400/35 hover:text-emerald-300"
             >
               <LinkedinIcon />
               LinkedIn
             </a>
-          </div>
+          </motion.div>
         </div>
-      </section>
 
-      <section id="projects" className="scroll-mt-10 py-24">
-        <SectionHeading eyebrow="Selected Work" title="Projects I have built" />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div variants={revealItem} className="hidden lg:block">
+          <SpotlightCard className="p-6">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+              <CodeIcon />
+            </div>
+            <p className="mt-16 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+              Currently Exploring
+            </p>
+            <p className="mt-3 text-lg font-semibold tracking-tight text-slate-100">
+              Better systems through thoughtful engineering.
+            </p>
+          </SpotlightCard>
+        </motion.div>
+      </motion.section>
+
+      <motion.section
+        initial={initial}
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.35 }}
+        variants={revealContainer}
+        aria-label="Quick stats"
+        className="grid divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-slate-900/40 px-6 backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-0"
+      >
+        {stats.map((stat) => (
+          <motion.div key={stat.label} variants={revealItem} className="space-y-2 py-6 sm:px-8">
+            <p className="text-2xl font-bold tracking-tight text-slate-100">{stat.value}</p>
+            <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-slate-500">
+              {stat.label}
+            </p>
+          </motion.div>
+        ))}
+      </motion.section>
+
+      <section id="projects" className="scroll-mt-24 space-y-12 py-28 sm:py-36">
+        <SectionHeading
+          eyebrow="Selected Work"
+          title="Projects with a product mindset."
+          description="A selection of work shaped around useful outcomes, clear interfaces, and engineering fundamentals."
+        />
+        <motion.div
+          initial={initial}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.12 }}
+          variants={revealContainer}
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        >
           {projects.map((project) => (
-            <article
-              key={project.title}
-              className="group flex min-h-72 flex-col rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition hover:-translate-y-1 hover:border-cyan-400/70 hover:bg-slate-900"
-            >
-              <h3 className="text-xl font-bold text-white">{project.title}</h3>
-              <p className="mt-4 flex-1 text-sm leading-7 text-slate-400">
-                {project.description}
-              </p>
-              <div className="my-6 flex flex-wrap gap-2">
-                {project.technologies.map((technology) => (
-                  <Badge key={technology}>{technology}</Badge>
-                ))}
-              </div>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-              >
-                View source
-                <ArrowUpRightIcon />
-              </a>
-            </article>
+            <motion.div key={project.title} variants={revealItem} className={project.className}>
+              <SpotlightCard className="h-full min-h-80 p-7">
+                <div className="flex h-full flex-col">
+                  <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+                    {project.eyebrow}
+                  </p>
+                  <h3 className="mt-5 text-2xl font-bold tracking-[-0.035em] text-slate-100">
+                    {project.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl flex-1 text-sm leading-7 text-slate-400">
+                    {project.description}
+                  </p>
+                  <div className="mt-8 flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <Badge key={technology}>{technology}</Badge>
+                    ))}
+                  </div>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-300 transition hover:text-emerald-200"
+                  >
+                    View source
+                    <ArrowUpRightIcon />
+                  </a>
+                </div>
+              </SpotlightCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
-      <section className="py-24">
-        <SectionHeading eyebrow="Toolbox" title="Skills I am growing" />
-        <div className="grid gap-5 md:grid-cols-3">
+      <section className="space-y-12 py-28 sm:py-36">
+        <SectionHeading
+          eyebrow="Technical Toolbox"
+          title="A practical, growing toolkit."
+          description="I choose tools based on the problem, while continuing to strengthen the fundamentals beneath them."
+        />
+        <div className="grid gap-4 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <article
-              key={group.title}
-              className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6"
-            >
-              <h3 className="text-lg font-bold text-white">{group.title}</h3>
-              <div className="mt-5 flex flex-wrap gap-2">
+            <SpotlightCard key={group.title} className="p-7">
+              <h3 className="text-xl font-bold tracking-[-0.03em] text-slate-100">{group.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">{group.description}</p>
+              <div className="mt-8 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <Badge key={skill}>{skill}</Badge>
                 ))}
               </div>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
       </section>
 
-      <footer className="flex flex-col gap-2 border-t border-slate-800 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <section id="experience" className="scroll-mt-24 space-y-12 py-28 sm:py-36">
+        <SectionHeading
+          eyebrow="Experience & Education"
+          title="Learning by building."
+          description="A focused path toward becoming an engineer who can move comfortably from idea to implementation."
+        />
+        <SpotlightCard className="p-7 sm:p-10">
+          <ol className="space-y-10">
+            {education.map((item, index) => (
+              <li key={item.title} className="relative grid gap-3 pl-7 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-9">
+                <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-emerald-300 bg-slate-950 shadow-[0_0_0_5px_rgba(52,211,153,0.08)]" />
+                {index < education.length - 1 ? (
+                  <span className="absolute bottom-[-2.75rem] left-[0.34rem] top-5 w-px bg-white/10" />
+                ) : null}
+                <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-emerald-400">
+                  {item.period}
+                </p>
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight text-slate-100">{item.title}</h3>
+                  <p className="mt-1 text-sm font-medium text-slate-400">{item.organization}</p>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500">{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </SpotlightCard>
+      </section>
+
+      <footer className="flex flex-col gap-3 border-t border-white/[0.08] py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; {new Date().getFullYear()} Dehan. Built with Next.js.</p>
-        <a href="#" className="transition hover:text-cyan-300">
+        <a href="#" className="font-medium transition hover:text-emerald-300">
           Back to top
         </a>
       </footer>

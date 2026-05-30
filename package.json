@@ -9,9 +9,10 @@
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out --nojekyll",
-    "deploy:github": "bash scripts/deploy-github.sh"
+    "deploy:github": "bash scripts/deploy.sh"
   },
   "dependencies": {
+    "framer-motion": "^12.40.0",
     "next": "^16.2.6",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
