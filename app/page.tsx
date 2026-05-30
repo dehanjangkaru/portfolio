@@ -104,14 +104,23 @@ function ArrowUpRightIcon() {
       stroke="currentColor"
       strokeWidth="2"
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17 17 7M7 7h10v10" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7 17 17 7M7 7h10v10"
+      />
     </svg>
   );
 }
 
 function GithubIcon() {
   return (
-    <svg aria-hidden="true" className="h-[1.125rem] w-[1.125rem]" fill="currentColor" viewBox="0 0 24 24">
+    <svg
+      aria-hidden="true"
+      className="h-[1.125rem] w-[1.125rem]"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
       <path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2A11.4 11.4 0 0 1 12 6.3c1 0 2 .1 2.9.4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.4c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z" />
     </svg>
   );
@@ -119,7 +128,12 @@ function GithubIcon() {
 
 function LinkedinIcon() {
   return (
-    <svg aria-hidden="true" className="h-[1.125rem] w-[1.125rem]" fill="currentColor" viewBox="0 0 24 24">
+    <svg
+      aria-hidden="true"
+      className="h-[1.125rem] w-[1.125rem]"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
       <path d="M20.5 3h-17A2.5 2.5 0 0 0 1 5.5v13A2.5 2.5 0 0 0 3.5 21h17a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 20.5 3ZM8.3 18H5.2V9.7h3.1V18ZM6.8 8.6a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2ZM19 18h-3v-4.5c0-1.2-.5-1.8-1.5-1.8-1.1 0-1.7.7-1.7 2.1V18h-3V9.7h2.9v1.1c.6-.9 1.6-1.4 2.7-1.4 2.2 0 3.6 1.4 3.6 4.2V18Z" />
     </svg>
   );
@@ -135,7 +149,11 @@ function CodeIcon() {
       stroke="currentColor"
       strokeWidth="1.7"
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12"
+      />
     </svg>
   );
 }
@@ -161,7 +179,9 @@ function SectionHeading({
       <h2 className="text-3xl font-bold tracking-[-0.04em] text-slate-900 sm:text-4xl">
         {title}
       </h2>
-      <p className="text-base font-medium leading-7 text-slate-600">{description}</p>
+      <p className="text-base font-medium leading-7 text-slate-600">
+        {description}
+      </p>
     </div>
   );
 }
@@ -171,7 +191,9 @@ function SurfaceCard({
   className = "",
 }: Readonly<{ children: ReactNode; className?: string }>) {
   return (
-    <div className={`rounded-3xl border border-slate-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+    <div
+      className={`rounded-3xl border border-slate-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-lg ${className}`}
+    >
       <div className="h-full">{children}</div>
     </div>
   );
@@ -184,7 +206,10 @@ export default function Home() {
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-5 sm:px-8 lg:px-12">
       <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200/80 bg-background py-5">
-        <a href="#" className="font-mono text-sm font-bold tracking-[0.2em] text-slate-900">
+        <a
+          href="#"
+          className="font-mono text-sm font-bold tracking-[0.2em] text-slate-900"
+        >
           DEHAN<span className="text-sky-700">.</span>
         </a>
         <div className="flex items-center gap-5">
@@ -223,7 +248,10 @@ export default function Home() {
             I build software with
             <span className="block text-slate-600">clarity and intention.</span>
           </motion.h1>
-          <motion.p variants={revealItem} className="max-w-2xl text-base font-medium leading-8 text-slate-600 sm:text-lg">
+          <motion.p
+            variants={revealItem}
+            className="max-w-2xl text-base font-medium leading-8 text-slate-600 sm:text-lg"
+          >
             I&apos;m Dehan, a software engineering student focused on shaping
             reliable systems and polished digital products. I care about the
             details that make software useful, maintainable, and easy to trust.
@@ -274,8 +302,14 @@ export default function Home() {
         className="grid divide-y divide-slate-200 rounded-3xl border border-slate-200/80 bg-white px-6 shadow-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-0"
       >
         {stats.map((stat) => (
-          <motion.div key={stat.label} variants={revealItem} className="space-y-2 py-6 sm:px-8">
-            <p className="text-2xl font-bold tracking-tight text-slate-900">{stat.value}</p>
+          <motion.div
+            key={stat.label}
+            variants={revealItem}
+            className="space-y-2 py-6 sm:px-8"
+          >
+            <p className="text-2xl font-bold tracking-tight text-slate-900">
+              {stat.value}
+            </p>
             <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-slate-600">
               {stat.label}
             </p>
@@ -297,7 +331,11 @@ export default function Home() {
           className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
           {projects.map((project) => (
-            <motion.div key={project.title} variants={revealItem} className={project.className}>
+            <motion.div
+              key={project.title}
+              variants={revealItem}
+              className={project.className}
+            >
               <SurfaceCard className="h-full min-h-80 p-7">
                 <div className="flex h-full flex-col">
                   <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-sky-700">
@@ -339,8 +377,12 @@ export default function Home() {
         <div className="grid gap-4 lg:grid-cols-3">
           {skillGroups.map((group) => (
             <SurfaceCard key={group.title} className="p-7">
-              <h3 className="text-xl font-bold tracking-[-0.03em] text-slate-900">{group.title}</h3>
-              <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{group.description}</p>
+              <h3 className="text-xl font-bold tracking-[-0.03em] text-slate-900">
+                {group.title}
+              </h3>
+              <p className="mt-3 text-sm font-medium leading-6 text-slate-600">
+                {group.description}
+              </p>
               <div className="mt-8 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <Badge key={skill}>{skill}</Badge>
@@ -351,7 +393,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="scroll-mt-24 space-y-12 py-28 sm:py-36">
+      <section
+        id="experience"
+        className="scroll-mt-24 space-y-12 py-28 sm:py-36"
+      >
         <SectionHeading
           eyebrow="Experience & Education"
           title="Learning by building."
@@ -360,7 +405,10 @@ export default function Home() {
         <SurfaceCard className="p-7 sm:p-10">
           <ol className="space-y-10">
             {education.map((item, index) => (
-              <li key={item.title} className="relative grid gap-3 pl-7 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-9">
+              <li
+                key={item.title}
+                className="relative grid gap-3 pl-7 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-9"
+              >
                 <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-sky-700 bg-white shadow-[0_0_0_5px_rgba(3,105,161,0.08)]" />
                 {index < education.length - 1 ? (
                   <span className="absolute bottom-[-2.75rem] left-[0.34rem] top-5 w-px bg-slate-200" />
@@ -369,9 +417,15 @@ export default function Home() {
                   {item.period}
                 </p>
                 <div>
-                  <h3 className="text-lg font-bold tracking-tight text-slate-900">{item.title}</h3>
-                  <p className="mt-1 text-sm font-semibold text-slate-600">{item.organization}</p>
-                  <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-slate-600">{item.description}</p>
+                  <h3 className="text-lg font-bold tracking-tight text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-slate-600">
+                    {item.organization}
+                  </p>
+                  <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-slate-600">
+                    {item.description}
+                  </p>
                 </div>
               </li>
             ))}
