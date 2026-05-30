@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #020617;
-  --foreground: #e2e8f0;
+  --background: #f8fafc;
+  --foreground: #334155;
 }
 
 html {
@@ -14,27 +14,12 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  background-image:
-    radial-gradient(circle at 18% 0%, rgb(16 185 129 / 0.08), transparent 28rem),
-    radial-gradient(circle at 82% 28%, rgb(15 23 42 / 0.82), transparent 32rem);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-.spotlight-layer {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  background: radial-gradient(
-    28rem circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgb(52 211 153 / 0.12),
-    transparent 44%
-  );
-}
-
-.spotlight-card:hover .spotlight-layer {
-  opacity: 1;
+:focus-visible {
+  outline: 3px solid #0369a1;
+  outline-offset: 4px;
 }
 
 @layer utilities {

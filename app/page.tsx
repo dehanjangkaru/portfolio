@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import type { MouseEvent, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const projects = [
   {
@@ -80,17 +80,17 @@ const revealContainer: Variants = {
   visible: {
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.08,
+      delayChildren: 0.06,
     },
   },
 };
 
 const revealItem: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -142,7 +142,7 @@ function CodeIcon() {
 
 function Badge({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <span className="rounded-full border border-emerald-400/15 bg-emerald-400/[0.06] px-3 py-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-emerald-300">
+    <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-sky-800">
       {children}
     </span>
   );
@@ -155,34 +155,24 @@ function SectionHeading({
 }: Readonly<{ eyebrow: string; title: string; description: string }>) {
   return (
     <div className="max-w-2xl space-y-4">
-      <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400">
+      <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-sky-700">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-bold tracking-[-0.04em] text-slate-100 sm:text-4xl">
+      <h2 className="text-3xl font-bold tracking-[-0.04em] text-slate-900 sm:text-4xl">
         {title}
       </h2>
-      <p className="text-base leading-7 text-slate-400">{description}</p>
+      <p className="text-base font-medium leading-7 text-slate-600">{description}</p>
     </div>
   );
 }
 
-function updateSpotlight(event: MouseEvent<HTMLElement>) {
-  const bounds = event.currentTarget.getBoundingClientRect();
-  event.currentTarget.style.setProperty("--mouse-x", `${event.clientX - bounds.left}px`);
-  event.currentTarget.style.setProperty("--mouse-y", `${event.clientY - bounds.top}px`);
-}
-
-function SpotlightCard({
+function SurfaceCard({
   children,
   className = "",
 }: Readonly<{ children: ReactNode; className?: string }>) {
   return (
-    <div
-      onMouseMove={updateSpotlight}
-      className={`spotlight-card group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-emerald-400/25 ${className}`}
-    >
-      <div className="spotlight-layer" />
-      <div className="relative z-10 h-full">{children}</div>
+    <div className={`rounded-3xl border border-slate-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-lg ${className}`}>
+      <div className="h-full">{children}</div>
     </div>
   );
 }
@@ -193,20 +183,20 @@ export default function Home() {
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-5 sm:px-8 lg:px-12">
-      <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-white/[0.06] bg-slate-950/75 py-5 backdrop-blur-xl">
-        <a href="#" className="font-mono text-sm font-bold tracking-[0.2em] text-slate-100">
-          DEHAN<span className="text-emerald-400">.</span>
+      <nav className="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200/80 bg-background py-5">
+        <a href="#" className="font-mono text-sm font-bold tracking-[0.2em] text-slate-900">
+          DEHAN<span className="text-sky-700">.</span>
         </a>
         <div className="flex items-center gap-5">
           <a
             href="#experience"
-            className="hidden text-sm font-medium text-slate-400 transition hover:text-emerald-300 sm:block"
+            className="hidden text-sm font-semibold text-slate-600 transition hover:text-sky-800 sm:block"
           >
             Experience
           </a>
           <a
             href="#projects"
-            className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-slate-200 transition duration-300 hover:scale-[1.02] hover:border-emerald-400/35 hover:text-emerald-300"
+            className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition duration-300 hover:scale-[1.02] hover:border-sky-300 hover:text-sky-800"
           >
             View my work
           </a>
@@ -222,18 +212,18 @@ export default function Home() {
         <div className="max-w-4xl space-y-8">
           <motion.p
             variants={revealItem}
-            className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-emerald-400"
+            className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-sky-700"
           >
             Software Engineering Student
           </motion.p>
           <motion.h1
             variants={revealItem}
-            className="text-balance text-5xl font-bold leading-[1.04] tracking-[-0.065em] text-slate-100 sm:text-7xl lg:text-[5.4rem]"
+            className="text-balance text-5xl font-bold leading-[1.04] tracking-[-0.065em] text-slate-900 sm:text-7xl lg:text-[5.4rem]"
           >
             I build software with
-            <span className="block text-slate-400">clarity and intention.</span>
+            <span className="block text-slate-600">clarity and intention.</span>
           </motion.h1>
-          <motion.p variants={revealItem} className="max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+          <motion.p variants={revealItem} className="max-w-2xl text-base font-medium leading-8 text-slate-600 sm:text-lg">
             I&apos;m Dehan, a software engineering student focused on shaping
             reliable systems and polished digital products. I care about the
             details that make software useful, maintainable, and easy to trust.
@@ -243,7 +233,7 @@ export default function Home() {
               href="https://github.com/dehanjangkaru"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-3 text-sm font-bold text-slate-950 transition duration-300 hover:scale-[1.02] hover:bg-emerald-300"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition duration-300 hover:scale-[1.02] hover:bg-sky-800"
             >
               <GithubIcon />
               GitHub
@@ -252,7 +242,7 @@ export default function Home() {
               href="https://linkedin.com/in/dehan-jangkaru"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-200 transition duration-300 hover:scale-[1.02] hover:border-emerald-400/35 hover:text-emerald-300"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition duration-300 hover:scale-[1.02] hover:border-sky-300 hover:text-sky-800"
             >
               <LinkedinIcon />
               LinkedIn
@@ -261,17 +251,17 @@ export default function Home() {
         </div>
 
         <motion.div variants={revealItem} className="hidden lg:block">
-          <SpotlightCard className="p-6">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">
+          <SurfaceCard className="p-6">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-200 bg-sky-50 text-sky-700">
               <CodeIcon />
             </div>
-            <p className="mt-16 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+            <p className="mt-16 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-sky-700">
               Currently Exploring
             </p>
-            <p className="mt-3 text-lg font-semibold tracking-tight text-slate-100">
+            <p className="mt-3 text-lg font-semibold tracking-tight text-slate-900">
               Better systems through thoughtful engineering.
             </p>
-          </SpotlightCard>
+          </SurfaceCard>
         </motion.div>
       </motion.section>
 
@@ -281,12 +271,12 @@ export default function Home() {
         viewport={{ once: true, amount: 0.35 }}
         variants={revealContainer}
         aria-label="Quick stats"
-        className="grid divide-y divide-white/[0.08] rounded-3xl border border-white/10 bg-slate-900/40 px-6 backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-0"
+        className="grid divide-y divide-slate-200 rounded-3xl border border-slate-200/80 bg-white px-6 shadow-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-0"
       >
         {stats.map((stat) => (
           <motion.div key={stat.label} variants={revealItem} className="space-y-2 py-6 sm:px-8">
-            <p className="text-2xl font-bold tracking-tight text-slate-100">{stat.value}</p>
-            <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-slate-500">
+            <p className="text-2xl font-bold tracking-tight text-slate-900">{stat.value}</p>
+            <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-slate-600">
               {stat.label}
             </p>
           </motion.div>
@@ -308,15 +298,15 @@ export default function Home() {
         >
           {projects.map((project) => (
             <motion.div key={project.title} variants={revealItem} className={project.className}>
-              <SpotlightCard className="h-full min-h-80 p-7">
+              <SurfaceCard className="h-full min-h-80 p-7">
                 <div className="flex h-full flex-col">
-                  <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-emerald-400">
+                  <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-sky-700">
                     {project.eyebrow}
                   </p>
-                  <h3 className="mt-5 text-2xl font-bold tracking-[-0.035em] text-slate-100">
+                  <h3 className="mt-5 text-2xl font-bold tracking-[-0.035em] text-slate-900">
                     {project.title}
                   </h3>
-                  <p className="mt-4 max-w-xl flex-1 text-sm leading-7 text-slate-400">
+                  <p className="mt-4 max-w-xl flex-1 text-sm font-medium leading-7 text-slate-600">
                     {project.description}
                   </p>
                   <div className="mt-8 flex flex-wrap gap-2">
@@ -328,13 +318,13 @@ export default function Home() {
                     href={project.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-300 transition hover:text-emerald-200"
+                    className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-700 transition hover:text-sky-800"
                   >
                     View source
                     <ArrowUpRightIcon />
                   </a>
                 </div>
-              </SpotlightCard>
+              </SurfaceCard>
             </motion.div>
           ))}
         </motion.div>
@@ -348,15 +338,15 @@ export default function Home() {
         />
         <div className="grid gap-4 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <SpotlightCard key={group.title} className="p-7">
-              <h3 className="text-xl font-bold tracking-[-0.03em] text-slate-100">{group.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">{group.description}</p>
+            <SurfaceCard key={group.title} className="p-7">
+              <h3 className="text-xl font-bold tracking-[-0.03em] text-slate-900">{group.title}</h3>
+              <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{group.description}</p>
               <div className="mt-8 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <Badge key={skill}>{skill}</Badge>
                 ))}
               </div>
-            </SpotlightCard>
+            </SurfaceCard>
           ))}
         </div>
       </section>
@@ -367,31 +357,31 @@ export default function Home() {
           title="Learning by building."
           description="A focused path toward becoming an engineer who can move comfortably from idea to implementation."
         />
-        <SpotlightCard className="p-7 sm:p-10">
+        <SurfaceCard className="p-7 sm:p-10">
           <ol className="space-y-10">
             {education.map((item, index) => (
               <li key={item.title} className="relative grid gap-3 pl-7 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-9">
-                <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-emerald-300 bg-slate-950 shadow-[0_0_0_5px_rgba(52,211,153,0.08)]" />
+                <span className="absolute left-0 top-1.5 h-3 w-3 rounded-full border-2 border-sky-700 bg-white shadow-[0_0_0_5px_rgba(3,105,161,0.08)]" />
                 {index < education.length - 1 ? (
-                  <span className="absolute bottom-[-2.75rem] left-[0.34rem] top-5 w-px bg-white/10" />
+                  <span className="absolute bottom-[-2.75rem] left-[0.34rem] top-5 w-px bg-slate-200" />
                 ) : null}
-                <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-emerald-400">
+                <p className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sky-700">
                   {item.period}
                 </p>
                 <div>
-                  <h3 className="text-lg font-bold tracking-tight text-slate-100">{item.title}</h3>
-                  <p className="mt-1 text-sm font-medium text-slate-400">{item.organization}</p>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500">{item.description}</p>
+                  <h3 className="text-lg font-bold tracking-tight text-slate-900">{item.title}</h3>
+                  <p className="mt-1 text-sm font-semibold text-slate-600">{item.organization}</p>
+                  <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-slate-600">{item.description}</p>
                 </div>
               </li>
             ))}
           </ol>
-        </SpotlightCard>
+        </SurfaceCard>
       </section>
 
-      <footer className="flex flex-col gap-3 border-t border-white/[0.08] py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="flex flex-col gap-3 border-t border-slate-200 py-8 text-sm font-medium text-slate-600 sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; {new Date().getFullYear()} Dehan. Built with Next.js.</p>
-        <a href="#" className="font-medium transition hover:text-emerald-300">
+        <a href="#" className="font-semibold transition hover:text-sky-800">
           Back to top
         </a>
       </footer>
