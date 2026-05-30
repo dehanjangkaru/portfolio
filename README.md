@@ -13,14 +13,17 @@ npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir
 
 ## Customize
 
-Before publishing:
+The project is configured for:
 
-1. Replace `YOUR_REPO_NAME` in `next.config.mjs` with the GitHub repository name.
-2. Replace each `YOUR_USERNAME` placeholder in `app/page.tsx`.
-3. Update the example projects, skills, bio, and social links in `app/page.tsx`.
+```text
+https://dehanjangkaru.github.io/portfolio/
+```
+
+Update the example projects, skills, bio, and social links in `app/page.tsx` as
+the portfolio grows.
 
 The production build uses `basePath` and `assetPrefix` so Next.js assets work
-when the site is hosted at `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`.
+when the site is hosted at `https://dehanjangkaru.github.io/portfolio/`.
 Local development continues to run at `http://localhost:3000/`.
 
 ## Public Images
@@ -30,7 +33,7 @@ content. For example, after adding `/public/profile.jpg`, use:
 
 ```tsx
 const basePath =
-  process.env.NODE_ENV === "production" ? "/YOUR_REPO_NAME" : "";
+  process.env.NODE_ENV === "production" ? "/portfolio" : "";
 
 <img src={`${basePath}/profile.jpg`} alt="Portrait of Dehan" />
 ```

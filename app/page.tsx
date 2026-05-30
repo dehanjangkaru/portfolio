@@ -4,21 +4,21 @@ const projects = [
     description:
       "A collaborative platform that helps students discover events, join communities, and stay connected on campus.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    href: "https://github.com/YOUR_USERNAME/campus-connect",
+    href: "https://github.com/dehanjangkaru/campus-connect",
   },
   {
     title: "Taskflow API",
     description:
       "A RESTful task management service with secure authentication, project workspaces, and clear API documentation.",
     technologies: ["Node.js", "Express", "PostgreSQL"],
-    href: "https://github.com/YOUR_USERNAME/taskflow-api",
+    href: "https://github.com/dehanjangkaru/taskflow-api",
   },
   {
     title: "Weather Dashboard",
     description:
       "A responsive forecast dashboard with location search, accessible data visualizations, and saved preferences.",
     technologies: ["React", "REST API", "CSS"],
-    href: "https://github.com/YOUR_USERNAME/weather-dashboard",
+    href: "https://github.com/dehanjangkaru/weather-dashboard",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function Home() {
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <a
-              href="https://github.com/YOUR_USERNAME"
+              href="https://github.com/dehanjangkaru"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
@@ -132,7 +132,7 @@ export default function Home() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/YOUR_USERNAME"
+              href="https://www.linkedin.com/in/dehanjangkaru"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"

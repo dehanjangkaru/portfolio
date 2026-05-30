@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const repoName = "YOUR_REPO_NAME";
+const repoName = "portfolio";
 const isProduction = process.env.NODE_ENV === "production";
 const basePath = isProduction ? `/${repoName}` : "";
 
