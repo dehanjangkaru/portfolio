@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out --nojekyll"
+    "deploy": "gh-pages -d out --nojekyll",
+    "deploy:github": "bash scripts/deploy-github.sh"
   },
   "dependencies": {
     "next": "^16.2.6",

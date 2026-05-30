@@ -50,13 +50,16 @@ npm run dev
 
 ## Deploy
 
-Push the repository to GitHub, then run:
+Commit your changes, then run:
 
 ```bash
-npm run deploy
+npm run deploy:github
 ```
 
-The `predeploy` script creates the `/out` static export and `gh-pages` publishes
-it to the `gh-pages` branch. The deploy command adds `.nojekyll` so GitHub Pages
-serves the generated `/_next` directory. In the repository settings, configure
+The GitHub deployment script checks for uncommitted changes, runs lint, pushes
+the current source branch, and publishes the `/out` static export to the
+`gh-pages` branch. It adds `.nojekyll` so GitHub Pages serves the generated
+`/_next` directory.
+
+For the first deployment only, open the repository Pages settings and configure
 GitHub Pages to deploy from the `gh-pages` branch and the `/ (root)` folder.
