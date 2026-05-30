@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #020617;
+  --foreground: #e2e8f0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  background-image:
+    radial-gradient(circle at 15% 5%, rgb(8 145 178 / 0.14), transparent 26rem),
+    radial-gradient(circle at 85% 35%, rgb(30 41 59 / 0.55), transparent 30rem);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
