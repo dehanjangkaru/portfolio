@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 const projects = [
   {
-    title: "Web Nusantara",
+    title: "Web Nusantara 2",
     eyebrow: "Featured Project",
     description:
       "A multi-page ticketing web experience with destination details, login flow, ticket purchasing, and interactive client-side behavior.",
