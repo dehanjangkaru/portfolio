@@ -57,5 +57,6 @@ npm run deploy
 ```
 
 The `predeploy` script creates the `/out` static export and `gh-pages` publishes
-it to the `gh-pages` branch. In the repository settings, configure GitHub Pages
-to deploy from the `gh-pages` branch and the `/ (root)` folder.
+it to the `gh-pages` branch. The deploy command adds `.nojekyll` so GitHub Pages
+serves the generated `/_next` directory. In the repository settings, configure
+GitHub Pages to deploy from the `gh-pages` branch and the `/ (root)` folder.
