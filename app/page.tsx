@@ -32,6 +32,7 @@ const projects = [
     href: "https://github.com/dehanjangkaru/basic-kalkulator",
     className: "",
   },
+<<<<<<< HEAD
 
   {
     title: "Online Campus",
@@ -42,6 +43,8 @@ const projects = [
     href: "https://github.com/dehanjangkaru/online-campus",
     className: "md:col-span-2",
   }
+=======
+>>>>>>> 4ccfc9dca1e62f58ecdc15dcaec54e6d0f2587db
 ];
 
 const skillGroups = [
@@ -53,17 +56,29 @@ const skillGroups = [
   {
     title: "Frameworks",
     description: "Tools for building reliable product experiences.",
+<<<<<<< HEAD
     skills: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS", "Laravel"],
+=======
+    skills: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS"],
+>>>>>>> 4ccfc9dca1e62f58ecdc15dcaec54e6d0f2587db
   },
   {
     title: "Workflow",
     description: "Systems that keep each project deliberate and maintainable.",
+<<<<<<< HEAD
     skills: ["Git", "GitHub", "MySQL", "AntiGravity IDE", "Laragon", "VS Code", "Postman"],
+=======
+    skills: ["Git", "GitHub", "MySQL", "Cursor"],
+>>>>>>> 4ccfc9dca1e62f58ecdc15dcaec54e6d0f2587db
   },
 ];
 
 const stats = [
+<<<<<<< HEAD
   { value: "4", label: "Projects Showcased" },
+=======
+  { value: "3", label: "Projects Showcased" },
+>>>>>>> 4ccfc9dca1e62f58ecdc15dcaec54e6d0f2587db
   { value: "10+", label: "Technologies" },
   { value: "Active", label: "GitHub Activity" },
 ];
